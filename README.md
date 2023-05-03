@@ -8,7 +8,7 @@ It’s required to implement typical phone book management application which enc
 # Requirements:
 
 1-   You will using first name and last name to order your phone book.
-2-   Give the user options to search, add or delete a contact; searching will be by first name, last name, both of them or part of them.
+2-   Give the user options to search, add or delete a contact;  searching will be by first name, last name, both of them or part of them.
 3-   Find a way to show the structure of your built BST to the user, no need of GUI; you may use test mode to show this.
 Hint: starting from any node draw 2 levels of the tree, give me an option to start from the root.
 4-   Apply inorder traversal to get all contacts.
