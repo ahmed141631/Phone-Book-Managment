@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import Src.ContactNode;
+
 public class CSVReader {
     
     public static void main(String[] args) {

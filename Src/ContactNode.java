@@ -1,5 +1,7 @@
+package Src;
 /**
- * this class is representating the elements of the contact node
+ * this class is representating the elements of the contact node that has firstname ,lastname
+ * phone ,email and address
  */
 public class ContactNode {
   private String firstName;

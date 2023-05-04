@@ -1,4 +1,5 @@
-import java.io.File;
+package Src;
+
 
 /**
  * this abstract class will indicates the share attrubites and methods that will each of the tree classes
@@ -6,16 +7,12 @@ import java.io.File;
  */
 
 public abstract class TreeAbstractClass {
-    /* these are the common attrubites that trees share */
-    protected ContactNode root;
-    protected ContactNode righContactNode;
-    protected ContactNode leftContactNode;
-    protected ContactNode parentContactNode;
+   
 
     protected int size;
 
     /* these are the common methods that trees will  use */
-    public abstract void Build(File file);
+    public abstract void Build(String filename);
     public abstract int GetHeight(ContactNode root);
     public abstract void InorderTraversal(ContactNode root);
     public abstract void showTree();

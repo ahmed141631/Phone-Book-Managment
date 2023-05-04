@@ -46,3 +46,8 @@
 2023-05-04 14:08:12 error: SQLITE_ERROR: no such table: issues
 2023-05-04 14:08:18 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/addresses.csv
 2023-05-04 14:08:18 error: SQLITE_ERROR: no such table: issues
+2023-05-04 14:08:49 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/.git/index.lock
+2023-05-04 14:08:49 error: SQLITE_ERROR: no such table: issues
+2023-05-04 16:37:08 info: tempDirectory:c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\temp
+2023-05-04 16:37:08 info: Extraction complete for source: c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\resources\embold-scanner-archive.zip, destination: c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\temp
+2023-05-04 16:37:08 info: Congratulations, your extension "Embold" is now active!
