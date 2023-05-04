@@ -51,3 +51,11 @@
 2023-05-04 16:37:08 info: tempDirectory:c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\temp
 2023-05-04 16:37:08 info: Extraction complete for source: c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\resources\embold-scanner-archive.zip, destination: c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\temp
 2023-05-04 16:37:08 info: Congratulations, your extension "Embold" is now active!
+2023-05-04 16:56:40 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/.git/index.lock
+2023-05-04 16:56:40 error: SQLITE_ERROR: no such table: issues
+2023-05-04 16:57:28 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/.git/index.lock
+2023-05-04 16:57:28 error: SQLITE_ERROR: no such table: issues
+2023-05-04 17:15:24 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/CSVReader.java
+2023-05-04 17:15:24 error: SQLITE_ERROR: no such table: issues
+2023-05-04 17:15:42 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/.git/refs/remotes/origin/main.lock
+2023-05-04 17:15:42 error: SQLITE_ERROR: no such table: issues

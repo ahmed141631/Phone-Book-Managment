@@ -13,8 +13,8 @@ public abstract class TreeAbstractClass {
 
     /* these are the common methods that trees will  use */
     public abstract void Build(String filename);
-    public abstract int GetHeight(ContactNode root);
-    public abstract void InorderTraversal(ContactNode root);
+    public abstract int GetHeight(TreeNode root);
+    public abstract void InorderTraversal(TreeNode root);
     public abstract void showTree();
 
 
