@@ -15,11 +15,11 @@ public class TreeNode {
   }
 
   public TreeNode(String firstName, String lastName, String phoneNumber, String email, String address){
-    this.data.setFirstName(firstName);
-    this.data.setLastName(lastName);
-    this.data.setPhoneNumber(phoneNumber);
-    this.data.setEmail(email);
-    this.data.setAddress(address);
+    this.data=new ContactNode(firstName,lastName,phoneNumber,email,address);
+
+  }
+  public void setData(String firstName, String lastName, String phoneNumber, String email, String address){
+   this.data=new ContactNode(firstName,lastName,phoneNumber,email,address);
   }
 
   public void getData(){

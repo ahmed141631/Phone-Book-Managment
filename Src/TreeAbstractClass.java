@@ -12,7 +12,7 @@ public abstract class TreeAbstractClass {
     protected int size;
 
     /* these are the common methods that trees will  use */
-    public abstract void Build(String filename);
+    public abstract TreeNode Build(String filename);
     public abstract int GetHeight(TreeNode root);
     public abstract void InorderTraversal(TreeNode root);
     public abstract void showTree();
