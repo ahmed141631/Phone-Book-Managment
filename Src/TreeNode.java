@@ -14,6 +14,10 @@ public class TreeNode {
     this.leftChild = leftChild;
   }
 
+  public TreeNode(ContactNode data){
+    this.data = data;
+  }
+
   public TreeNode(String firstName, String lastName, String phoneNumber, String email, String address){
     this.data=new ContactNode(firstName,lastName,phoneNumber,email,address);
 

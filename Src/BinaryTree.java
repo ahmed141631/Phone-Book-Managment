@@ -1,66 +1,48 @@
 package Src;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 
 
 public class BinaryTree extends TreeAbstractClass {
    public TreeNode root;
-   static  String line;
+   public String filename;
+  static String line="";
+  static int count=0;
+   
 
    public BinaryTree(){
     this.root=new TreeNode();
+    
    }
    public BinaryTree(String filename){
-    this.root=new TreeNode();
-
-      this.root=Build(filename);
-        
+   
+    this.filename = filename;
+    this.root = Build();
+   // this.root.getData();
         //GetHeight(root);
        // showTree();
    }
 
 @Override
-public TreeNode Build(String filename) {
-
-    TreeNode newnNode=new TreeNode();
-    
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-       
-       
-        line = br.readLine();
-        
-            String[] columns = line.split(",");
-            String[] names=columns[0].split("");
-            if(names.length==1){
-             newnNode.setData(names[0],"hi", columns[1], columns[2], columns[3]);
-            }else{
-                newnNode.setData(names[0], names[1], columns[1], columns[2], columns[3]);
-            }
-          //  newnNode.getData();
-
-            line = br.readLine();
-        
-            String[] columnss = line.split(",");
-            String[] namess=columns[0].split("");
-            newnNode.leftChild=new TreeNode(columnss[0], namess[0], columnss[1], columnss[2], columnss[3]);
-           // newnNode.leftChild.getData();
-            line = br.readLine();
-        
-            String[] columnsss = line.split(",");
-            String[] namesss=columns[0].split("");
-            newnNode.rightChild=new TreeNode(columnsss[0], namesss[0], columnsss[1], columnsss[2], columnsss[3]);
-         //   newnNode.rightChild.getData();
-            
-            //temp.get_info();
-        
-        
-    } catch (IOException e) {
-        e.printStackTrace();
+public TreeNode Build() {
+    System.out.println(++count);
+    if(count==100) return null;
+    //System.out.println("iam in build mode");
+    ContactNode contactNode = getContactLine();
+    if (contactNode == null) {
+       // System.out.println("contactNode is null");
+        return null;
     }
+    TreeNode newnNode = new TreeNode(contactNode);
+    //System.out.println("leftnode");
+    newnNode.leftChild = Build();
+    System.out.println("rightnode");
+    newnNode.rightChild = Build();
+
     
-    root=newnNode;
     return newnNode;
 }
 
@@ -73,8 +55,9 @@ public int GetHeight(TreeNode root) {
 @Override
 public void InorderTraversal(TreeNode root) {
     TreeNode temNode = root;
-
+    System.out.println("i amm in ");
     if(temNode==null) {
+        System.out.println("i amm in ");
         return;
     }
 
@@ -94,4 +77,37 @@ public void showTree() {
     throw new UnsupportedOperationException("Unimplemented method 'showTree'");
 }
 
-}
+
+/* make method  to return a line(contactNode) from the csv file and use it in the
+ * build method
+   */
+
+   public ContactNode getContactLine() {
+    ContactNode contactNode = new ContactNode();
+    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        if (line == null) {
+            return null;
+        }
+        line = br.readLine();
+        if (line == null) {
+            return null;
+        }
+
+        String[] columns = line.split(",");
+        if(columns.length!=4) return null;
+        String[] names=columns[0].split(" ");
+        if(names.length==1){
+            contactNode.setData(names[0]," ", columns[1], columns[2], columns[3]);
+           }else{
+               contactNode.setData(names[0], names[1], columns[1], columns[2], columns[3]);
+           }
+        
+    } catch (FileNotFoundException e) {
+        System.err.println("File not found: " + filename);
+        return null;
+    } catch (IOException e) {
+        e.printStackTrace();
+    }
+
+    return contactNode;
+}}

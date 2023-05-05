@@ -26,6 +26,14 @@ public class ContactNode {
         this.address = contactNode.address;
     }
 
+    public void setData(String firstName, String lastName, String phoneNumber, String email, String address) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phoneNumber = phoneNumber;
+        this.email = email;
+        this.address = address;
+    }
+
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
