@@ -51,6 +51,7 @@ public class BinaryTree extends TreeAbstractClass {
 
 @Override
 public int GetHeight(TreeNode root) {
+    // the code assumes that the binary tree is a valid binary tree
     TreeNode temp=this.root;
     int left_height;
     int right_height;

@@ -91,3 +91,15 @@
 2023-05-06 18:16:42 info: tempDirectory:c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\temp
 2023-05-06 18:16:42 info: Extraction complete for source: c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\resources\embold-scanner-archive.zip, destination: c:\Users\Lenovo\.vscode\extensions\embold-vscode.embold-0.1.4\temp
 2023-05-06 18:16:42 info: Congratulations, your extension "Embold" is now active!
+2023-05-06 19:03:06 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/Src/ContactNode.class
+2023-05-06 19:03:06 error: SQLITE_ERROR: no such table: issues
+2023-05-06 19:03:09 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/Src/TreeAbstractClass.class
+2023-05-06 19:03:09 error: SQLITE_ERROR: no such table: issues
+2023-05-06 19:03:13 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/Src/TreeNode.class
+2023-05-06 19:03:13 error: SQLITE_ERROR: no such table: issues
+2023-05-06 19:03:17 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/Src/BinaryTree.java
+2023-05-06 19:03:17 error: SQLITE_ERROR: no such table: issues
+2023-05-06 19:03:29 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/Src/BinaryTree.class
+2023-05-06 19:03:29 error: SQLITE_ERROR: no such table: issues
+2023-05-06 19:05:14 info: file:///c%3A/Users/Lenovo/Desktop/projects/PhoneBook/Phone-Book-Managment/.git/index.lock
+2023-05-06 19:05:14 error: SQLITE_ERROR: no such table: issues
