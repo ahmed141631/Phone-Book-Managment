@@ -49,33 +49,33 @@ public class BinaryTree extends TreeAbstractClass {
    return newnode;
 }
 
-@Override
-public int GetHeight(TreeNode root) {
-    // the code assumes that the binary tree is a valid binary tree
-    TreeNode temp=this.root;
-    int left_height;
-    int right_height;
-    if(temp==null) return -1;
+// @Override
+// public int GetHeight(TreeNode root) {
+//     // the code assumes that the binary tree is a valid binary tree
+//     TreeNode temp=this.root;
+//     int left_height;
+//     int right_height;
+//     if(temp==null) return -1;
    
-    left_height=GetHeight(temp.leftChild);
-    right_height=GetHeight(temp.rightChild);
+//     left_height=GetHeight(temp.leftChild);
+//     right_height=GetHeight(temp.rightChild);
     
-    return Math.max(left_height, right_height)+1;
-}
+//     return Math.max(left_height, right_height)+1;
+// }
 
-@Override
-public void InorderTraversal(TreeNode root) {
-    TreeNode temNode = root;
-    if(temNode==null) {
-        //System.out.println("i amm in ");
-        return;
-    }
+// @Override
+// public void InorderTraversal(TreeNode root) {
+//     TreeNode temNode = root;
+//     if(temNode==null) {
+//         //System.out.println("i amm in ");
+//         return;
+//     }
 
-    InorderTraversal(temNode.leftChild);
-    temNode.getData();
-    InorderTraversal(temNode.rightChild);
+//     InorderTraversal(temNode.leftChild);
+//     temNode.getData();
+//     InorderTraversal(temNode.rightChild);
     
-}
+// }
 
 
   
