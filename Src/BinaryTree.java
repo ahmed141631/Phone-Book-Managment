@@ -4,60 +4,69 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+
 
 
 public class BinaryTree extends TreeAbstractClass {
    public TreeNode root;
    public String filename;
-  static String line="";
-  static int count=0;
+   public int count ;
+   ArrayList<ContactNode>contactNodes;
+
    
 
+
+
    public BinaryTree(){
+    count = 0;
     this.root=new TreeNode();
     
    }
    public BinaryTree(String filename){
+    count = 0;
    
     this.filename = filename;
+   this.contactNodes=readContactsFromFile();
     this.root = Build();
-   // this.root.getData();
+    
         //GetHeight(root);
        // showTree();
    }
 
 @Override
-public TreeNode Build() {
-    System.out.println(++count);
-    if(count==100) return null;
-    //System.out.println("iam in build mode");
-    ContactNode contactNode = getContactLine();
-    if (contactNode == null) {
-       // System.out.println("contactNode is null");
-        return null;
-    }
-    TreeNode newnNode = new TreeNode(contactNode);
-    //System.out.println("leftnode");
-    newnNode.leftChild = Build();
-    System.out.println("rightnode");
-    newnNode.rightChild = Build();
+  public TreeNode Build() {
 
+    if(count==this.contactNodes.size()) return null;
     
-    return newnNode;
+   TreeNode newnode=new TreeNode();
+   newnode.data=this.contactNodes.get(count++);
+
+   //left child node
+   newnode.leftChild=Build();
+   newnode.rightChild=Build();
+   
+   return newnode;
 }
 
 @Override
 public int GetHeight(TreeNode root) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'GetHeight'");
+    TreeNode temp=this.root;
+    int left_height;
+    int right_height;
+    if(temp==null) return -1;
+   
+    left_height=GetHeight(temp.leftChild);
+    right_height=GetHeight(temp.rightChild);
+    
+    return Math.max(left_height, right_height)+1;
 }
 
 @Override
 public void InorderTraversal(TreeNode root) {
     TreeNode temNode = root;
-    System.out.println("i amm in ");
     if(temNode==null) {
-        System.out.println("i amm in ");
+        //System.out.println("i amm in ");
         return;
     }
 
@@ -78,36 +87,39 @@ public void showTree() {
 }
 
 
-/* make method  to return a line(contactNode) from the csv file and use it in the
+
+
+/* make method  to return a list of lines(contactNode) from the csv file and use it in the
  * build method
    */
 
-   public ContactNode getContactLine() {
-    ContactNode contactNode = new ContactNode();
-    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-        if (line == null) {
-            return null;
-        }
-        line = br.readLine();
-        if (line == null) {
-            return null;
-        }
+  
+public ArrayList<ContactNode> readContactsFromFile() {
+   ArrayList <ContactNode> contacts = new ArrayList<>();
 
-        String[] columns = line.split(",");
-        if(columns.length!=4) return null;
-        String[] names=columns[0].split(" ");
-        if(names.length==1){
-            contactNode.setData(names[0]," ", columns[1], columns[2], columns[3]);
-           }else{
-               contactNode.setData(names[0], names[1], columns[1], columns[2], columns[3]);
-           }
-        
+    try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+        String line;
+        while ((line = br.readLine()) != null) {
+            String[] columns = line.split(",");
+            if (columns.length != 4) {
+                continue; // Skip lines with invalid format
+            }
+            String[] names = columns[0].split(" ");
+            ContactNode contactNode;
+            if (names.length == 1) {
+                contactNode = new ContactNode(names[0], " ", columns[1], columns[2], columns[3]);
+            } else {
+                contactNode = new ContactNode(names[0], names[1], columns[1], columns[2], columns[3]);
+            }
+            contacts.add(contactNode);
+        }
     } catch (FileNotFoundException e) {
         System.err.println("File not found: " + filename);
-        return null;
     } catch (IOException e) {
         e.printStackTrace();
     }
 
-    return contactNode;
-}}
+    return contacts;
+}
+
+}

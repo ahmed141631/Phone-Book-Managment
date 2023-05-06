@@ -1,10 +1,13 @@
 package Src;
 
+import java.util.LinkedList;
+
 public class TreeNode {
   protected  ContactNode data;
-  protected  TreeNode parent;
   protected  TreeNode rightChild;
   protected  TreeNode leftChild;
+  protected LinkedList<TreeNode>  children;
+  protected  TreeNode parent;
 
   public TreeNode(){}
   public TreeNode(ContactNode data, TreeNode parent, TreeNode rightChild,TreeNode leftChild) {
