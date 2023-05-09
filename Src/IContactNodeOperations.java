@@ -5,7 +5,12 @@ package Src;
  */
 
 public interface IContactNodeOperations {
-    public  ContactNode search(String firstName, String lastName);
+   // public  ContactNode search(String firstName, String lastName);
+    /* 
+     * public ContactNode search(String firstName);
+     * public ContactNode search(String lastName);
+     * 
+     */
     public  void addContact(String firstName, String lastName, String phoneNumber, String email, String address);
     public  void deleteContact(String firstName, String lastName);
     public  void updateContact(String firstName, String lastName, String phoneNumber, String email, String address);
