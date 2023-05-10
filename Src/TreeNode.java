@@ -24,6 +24,9 @@ public class TreeNode {
   public TreeNode(ContactNode data){
     this.data = data;
     this.children=new LinkedList<>();
+    this.rightChild=new TreeNode();
+    this.leftChild=new TreeNode();
+    height=0;
   }
 
   public TreeNode(String firstName, String lastName, String phoneNumber, String email, String address){
@@ -38,6 +41,7 @@ public class TreeNode {
   public void getData(){
          data.get_info();;
   }
+  
 
   public void addchild(TreeNode child){
     child.setParent(this);

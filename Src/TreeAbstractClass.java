@@ -12,10 +12,8 @@ public abstract class TreeAbstractClass {
 
     protected int size;
 
-    /**
-     * Builds the tree.
-     */
-    public abstract TreeNode build();
+    
+  
 
     /**
      * Computes the height of the tree rooted at the given node.
