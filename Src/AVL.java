@@ -2,127 +2,112 @@ package Src;
 
 import java.util.ArrayList;
 
-public class AVL extends TreeAbstractClass  implements IContactNodeOperations{
-    String filename;
-    public TreeNode root;
-    ArrayList<ContactNode> contactNodeList;
-    /* will extend this class and remove this object later */
-   
+/**
+ * AVL tree structure
+ */
+public class AVL extends TreeAbstractClass{
 
-    public AVL(){}
-    public AVL(String filename){
-        this.filename = filename;
-        contactNodeList =readContactsFromFile(filename);
+   public TreeNode rootoNode;
+   public String filename;
+   public  ArrayList<ContactNode>contactNodes;
 
-    //  for(int i=0; i<contactNodeList.size(); i++){
-        this.root = insert(this.root, contactNodeList.get(0));
-      
-        System.out.println(contactNodeList.size());
-       // root.getData();
-        inorderTraversal(this.root);
+
+   public AVL() {}
+
+   public AVL(String filename){
+   // root = new TreeNode();
+    this.filename = filename;
+    this.contactNodes=readContactsFromFile(this.filename);
+
+   // for(ContactNode contactNode : contactNodes){
+        this.rootoNode=insertcontactNode(rootoNode, contactNodes.get(0));
+        this.rootoNode=insertcontactNode(rootoNode, contactNodes.get(1));
         
-    }
+   // }
+   // inorderTraversal(this.root);
+    
+   }
 
-  /*
-   * how to build Avl tree :
-   * Perform the normal BST insertion. 
-   *The current node must be one of the ancestors of the newly inserted node. Update the height of the current node. 
-   Get the balance factor (left subtree height – right subtree height) of the current node. 
-   *If the balance factor is greater than 1, then the current node is unbalanced and we are either in the Left Left case or left Right case. 
-   *To check whether it is left left case or not,
-    compare the newly inserted key with the key in the left subtree root. 
-   *If the balance factor is less than -1, then the current node is unbalanced and we are either in the Right Right case or Right-Left case. 
-   To check whether it is the Right Right case or not, compare the newly inserted key with the key in the right subtree root.    
+   /* 
+       public deletecontactNode(){};
+       public searchcontactNode(){};
    */
 
 
-   public TreeNode rightRotate(TreeNode y){
+   public int getbalancedfactror(TreeNode node){
+    if(node ==null) return 0;
+    return node.leftChild.getHeight()-node.rightChild.getHeight();
+   }
 
-   TreeNode x= y.leftChild;
-   TreeNode t2 = x.rightChild;
-   // Perform rotation
-   x.rightChild = y;
-   y.leftChild = t2;
+   public TreeNode insertcontactNode(TreeNode root, ContactNode contactNode){
+    /*
+     * 1. do normal BST 
+     * 
+     * 2. caluclate the balanced tree
+     * 
+     * 3. if f any node in the tree has a balance factor that is
+     * greater than 1 or less than -1, the tree is unbalanced and needs to be rebalanced.
+     * 
+     * 4. To rebalance the tree, perform one or more rotations on the unbalanced nodes.
+     * There are four types of rotations: left rotation, right rotation, left-right rotation, and right-left rotation.
+     *  The type of rotation to perform depends on the balance factor and structure of the tree. 
+     * 
+     * 5. Repeat steps 2-4 until the tree is balanced. This can be done through recursive processing of the subtrees.
+     */
 
-       y.setHeight(Math.max(y.leftChild.getHeight(), y.rightChild.getHeight())+1);
-       x.setHeight(Math.max(x.leftChild.getHeight(),x.rightChild.getHeight())+1);
-    
-    return x;
-
-
-}
-   public TreeNode leftRotate(TreeNode x){
-
-    TreeNode y = x.leftChild;
-    TreeNode t2 = y.rightChild;
-
-    y.leftChild = x;
-    x.rightChild = t2;
-
-    x.setHeight(Math.max(x.leftChild.getHeight(),x.rightChild.getHeight())+1);
-    y.setHeight(Math.max(y.leftChild.getHeight(),y.rightChild.getHeight())+1);
-    
-    return y;
-
-}
-
-public int getBalancedFactor(TreeNode node){
-    if(node==null) return 0;
-    return (node.leftChild.getHeight()-node.rightChild.getHeight());
-}
-
-public TreeNode insert(TreeNode rootNode, ContactNode node){
-    TreeNode newnode = new TreeNode(node);
-    if(rootNode == null){
-        rootNode = newnode;
-        System.out.println("i am here ");
-        rootNode.getData();
-        return rootNode;
+     if (contactNode == null) {
+        return root;
     }
-    System.out.println("u should nt be here ");
-    if(node.getFirstName().compareTo(rootNode.data.getFirstName()) < 0){
-        rootNode.leftChild = insert(rootNode.leftChild, node);
-    } else if(node.getFirstName().compareTo(rootNode.data.getFirstName()) > 0){
-        rootNode.rightChild = insert(rootNode.rightChild, node);
-    } else{
-        return rootNode;
+    if (root == null) {
+        return new TreeNode(contactNode);
     }
-
-    // Check if the node is balanced and perform rotations if necessary
-    rootNode.setHeight(1 + Math.max(getHeight(rootNode.leftChild), getHeight(rootNode.rightChild)));
-    int balance = getBalancedFactor(rootNode);
-    if (balance > 1 && node.getFirstName().compareTo(rootNode.leftChild.data.getFirstName()) < 0){
-        return rightRotate(rootNode);
+    int comparison = root.data.getFirstName().compareTo(contactNode.getFirstName());
+    if (comparison > 0) {
+        root.leftChild = insertcontactNode(root.leftChild, contactNode);
+    } else if (comparison < 0) {
+        root.rightChild = insertcontactNode(root.rightChild, contactNode);
+    } else {
+        // contactNode already exists in the tree, do nothing
+        return root;
     }
-    if (balance < -1 && node.getFirstName().compareTo(rootNode.rightChild.data.getFirstName()) > 0){
-        return leftRotate(rootNode);
-    }
-    if (balance > 1 && node.getFirstName().compareTo(rootNode.leftChild.data.getFirstName()) > 0){
-        rootNode.leftChild = leftRotate(rootNode.leftChild);
-        return rightRotate(rootNode);
-    }
-    if (balance < -1 && node.getFirstName().compareTo(rootNode.rightChild.data.getFirstName()) < 0){
-        rootNode.rightChild = rightRotate(rootNode.rightChild);
-        return leftRotate(rootNode);
-    }
-    return rootNode;
-}
-@Override
-public void addContact(String firstName, String lastName, String phoneNumber, String email, String address) {
-    ContactNode contactNode = new ContactNode(firstName, lastName, phoneNumber, email, address);
-    insert(root, contactNode);
    
-}
-@Override
-public void deleteContact(String firstName, String lastName) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'deleteContact'");
-}
-@Override
-public void updateContact(String firstName, String lastName, String phoneNumber, String email, String address) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'updateContact'");
-}
+
+
+
+    
+
+
+
+    return null;
+   }
+
+
+
+   public TreeNode leftRotate(TreeNode x){
+    TreeNode y=x.rightChild;
+    TreeNode t2=y.leftChild;
+    y.leftChild=x;
+    x.rightChild=t2;
+    x.setHeight(getmax(x.leftChild.getHeight(), x.rightChild.getHeight())+1);
+    y.setHeight(getmax(y.leftChild.getHeight(), y.rightChild.getHeight())+1);
+    return y;
+   }
+
+
+   public TreeNode rightRotate(TreeNode y){
+    TreeNode x=y.leftChild;
+    TreeNode t2=x.rightChild;
+    x.rightChild=y;
+    y.leftChild=t2;
+    y.setHeight(getmax(y.leftChild.getHeight(), y.rightChild.getHeight())+1);
+    x.setHeight(getmax(x.leftChild.getHeight(), x.rightChild.getHeight())+1);
+
+    return x;
+   }
+
+
+   
+
+
 
 }
-

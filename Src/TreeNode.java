@@ -12,7 +12,7 @@ public class TreeNode {
 
   public TreeNode(){}
   public TreeNode(ContactNode data, TreeNode parent, TreeNode rightChild,TreeNode leftChild) {
-    this.data = data;
+    this.data = new ContactNode(data);
     this.parent = parent;
     this.rightChild = rightChild;
     this.leftChild = leftChild;
@@ -22,7 +22,8 @@ public class TreeNode {
   }
 
   public TreeNode(ContactNode data){
-    this.data = data;
+    data=
+    this.data = new ContactNode(data);
     this.children=new LinkedList<>();
     this.rightChild=new TreeNode();
     this.leftChild=new TreeNode();
@@ -39,7 +40,7 @@ public class TreeNode {
   }
 
   public void getData(){
-         data.get_info();;
+         data.get_info();
   }
   
 

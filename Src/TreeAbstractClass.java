@@ -12,7 +12,10 @@ public abstract class TreeAbstractClass {
 
     protected int size;
 
-    
+    public static void buildBinaryTree(){
+
+            //build the tree structure of binary ordinary binary tree 
+    }
   
 
     /**
@@ -83,4 +86,12 @@ public ArrayList<ContactNode> readContactsFromFile(String filename) {
  
      return contacts;
  }
+
+public static int getmax(int x,int y){
+    return Math.max(x,y);
+}
+
+public static int getmin(int x,int y){
+    return Math.min(x, y);
+}
 }
